@@ -7,7 +7,10 @@ Comprehensive guides for Vega OS development on the Fire TV Stick 4K Select.
 - **[Authentication](AUTHENTICATION.md)** — Vega CLI login, Amazon Developer account, and the headless keyring solution that makes `vega devmode login` work in containers/servers without a desktop keyring.
 - **[Devmode](DEVMODE.md)** — Enabling developer mode on the Fire Stick: the TV code flow, vendor selection, and what changes on the device.
 - **[App Development](APP-DEVELOPMENT.md)** — Building Vega OS apps: manifest, React Native/Kepler, WebView template, build flags. For the full 2,100-line deep dive, see [VEGA-APP-GENIUS.md](VEGA-APP-GENIUS.md).
-- **[Mission Control](MISSION-CONTROL.md)** — Our app: architecture, the TV-optimized dashboard, and how the pieces fit together.
+- **[Mission Control](MISSION-CONTROL.md)** — Our app: architecture, the Netflix-style TV dashboard redesign, and how the pieces fit together.
+- **[RVG Bridge](RVG-BRIDGE.md)** — The remote-control "hack": an HTTP server on the VM that translates RVG API calls into ADB commands for the Fire Stick.
+- **[Never-Sleep](NEVER-SLEEP.md)** — How the Fire Stick stays awake indefinitely via Vega's `alcli` activity lock + keepalive.
+- **[Feature Roadmap](FEATURE-ROADMAP.md)** — The 24-feature "cool features" backlog: TV dashboard, cross-device, automation, media, Kavi integration, fun/wow.
 - **[Deployment](DEPLOYMENT.md)** — Deploying to the stick over the tailnet: the socat tunnel method, `vda` commands, and the install/launch cycle.
 - **[Troubleshooting](TROUBLESHOOTING.md)** — Common issues and fixes: launcher visibility, WebView caching, bundle staleness, Alexa.
 

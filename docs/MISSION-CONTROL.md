@@ -112,8 +112,24 @@ id = "com.amazon.webview.renderer_service"
 - **Dashboard content** (cards, icons, layout) → edit in `kellner-dot/seth-dashboard`, push. The Fire Stick picks it up on next app launch (or page refresh). **No rebuild needed.**
 - **App wrapper** (URL, icon, manifest, WebView settings) → edit in `app/`, rebuild with bumped `--build-number`, revalidate, redeploy. See [DEPLOYMENT.md](DEPLOYMENT.md).
 
-## Roadmap
+## Netflix-style redesign (Oct 3, 2026)
 
-- [ ] **IPTV player integration** — wrap a web IPTV player (TV Navigator recommended: open-source, TV-optimized, Xtream Codes + M3U, HLS.js) as a second screen/section in the app. Flix Pro itself is Android-only, no web version.
-- [ ] **Auto-update** — in-app update checker that pings GitHub for new VPKG versions.
-- [ ] **RVG agent for Fire Stick** — remote control server (status/screenshot/input) running on the stick. In progress.
+The dashboard was redesigned in the visual language of leading streaming apps (Netflix / Prime Video / Disney+):
+
+- **Slim sticky top bar** — MISSION CONTROL logo left, LIVE badge + clock right
+- **Hero banner** (~470px, cinematic) — rotates intelligently: Now Playing if media is active → Morning Briefing (Kavi digest) before noon → featured device otherwise. Big gradient typography, stat blocks, action buttons.
+- **Horizontal poster rows** — "My Fleet", "Media", "Operations", plus "Quick Actions" (Photo Frame, IPTV Player, Refresh). All cards are 16:9 posters with gradient art backgrounds.
+- **Focus system** — focused poster scales 1.08x with cyan glow; 300ms cubic-bezier transitions. Buttery `translateX` row scrolling.
+- **Cinematic detail overlay** — scale/fade entrance, backdrop blur.
+- **Click support** — every poster is clickable (mouse/touch) in addition to DPAD; overlay has ✕ close, clickable backdrop, and an "Open →" action button for cards with real URLs (Emby, TeraBox, Apple Music, GitHub, Calendar).
+- **Rich visualizations** — animated SVG storage donut charts, uptime sparklines, fleet-mesh network graph, drifting gradient background orbs, animated big-number counters, pulsing status rings, Emby poster shelf, GitHub contribution grid. All pure SVG+CSS, GPU-friendly.
+
+## Roadmap status (Oct 3, 2026)
+
+Completed since the original roadmap was written:
+
+- [x] **IPTV player** — `com.kellner.iptvplayer` wrapping TV Navigator (Xtream Codes + M3U + HLS), installed and launched on the stick
+- [x] **Auto-update** — in-dashboard version check via `version.json`; dismissible "Update available" banner; `?b=N` / `?appBuild=N` query param support
+- [x] **RVG bridge** — the hack: HTTP server on the VM translating RVG API calls to ADB (see [RVG-BRIDGE.md](RVG-BRIDGE.md))
+- [x] **Never-sleep** — `alcli` activity lock + 2-min keepalive (see [NEVER-SLEEP.md](NEVER-SLEEP.md))
+- [x] **All 24 features** from [FEATURE-ROADMAP.md](FEATURE-ROADMAP.md) — notification center, send-to-TV, phone-as-remote, unified now playing, good night routine, and more
