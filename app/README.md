@@ -1,34 +1,39 @@
-# app/
+# Mission Control for Vega OS
 
-Placeholder for the Mission Control Vega OS app source (React Native).
+React Native WebView app for the Fire TV Stick 4K Select (Vega OS).
 
-## Status
+## What it does
 
-The app source has not been created yet — it will be scaffolded from the Vega SDK's
-hello-world template once the SDK installation completes.
+Loads the Mission Control fleet dashboard
+(`https://kellner-dot.github.io/seth-dashboard/mission-control/`)
+in a native Vega WebView — full-screen on the TV.
 
-## Build process
+## Project layout
+
+- `src/App.tsx` — WebView pointing at the live dashboard URL
+- `manifest.toml` — Vega package manifest (`com.kellner.missioncontrol`)
+- `assets/index.html` — bundled fallback page
+
+## Build
 
 ```bash
-cd app
+# Install dependencies (npm needs --no-bin-links in restricted containers)
+npm install --no-bin-links --no-audit --no-fund --ignore-scripts
 
-# Regenerate package.json from the SDK hello-world template (if starting fresh)
+# Build for armv7 (Fire TV Stick 4K Select)
+vega build --target armv7 --buildType Release --build-number <N>
 
-# Build for armv7 (Fire TV Stick 4K Select architecture)
-npx react-native build-vega
-
-# Validate the package — MUST contain the Metro bundle, not be an empty
-# manifest-only package (~4.7 KB). A valid .vpkg is MBs in size.
-vega exec vpt validate
+# Validate — MUST NOT be the ~4.7 KB empty package
+vega exec vpt validate build/armv7-release/missioncontrol_armv7.vpkg
 ```
 
-**Warning:** `vega build` alone can produce empty packages. Always use
-`npx react-native build-vega` for the real React Native build.
+The validated `.vpkg` lands in `build/armv7-release/`.
 
 ## Deploy
 
 ```bash
-../scripts/deploy.sh
+# Fire Stick must be in devmode with ADB open (port 5555)
+vega run-app build/armv7-release/missioncontrol_armv7.vpkg
 ```
 
-(requires the stick in devmode with ADB port 5555 reachable — see `../docs/TAILNET-SETUP.md`)
+See `../scripts/devmode.sh` and `../scripts/deploy.sh`.
