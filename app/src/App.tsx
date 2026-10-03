@@ -36,7 +36,7 @@ export const App = () => {
         // userAgent={''}
         source={{
           // headers: {},
-          uri: "https://kellner-dot.github.io/seth-dashboard/mission-control/",
+          uri: "https://kellner-dot.github.io/seth-dashboard/mission-control/tv.html",
         }}
         onLoad={(_event: WebViewNavigationEvent) => {
           console.info('Page loading completed...');

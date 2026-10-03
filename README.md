@@ -20,9 +20,20 @@ Development workspace for Seth's **Fire TV Stick 4K Select** (Vega OS).
 
 ## Docs
 
-- [`docs/URL-INVESTIGATION.md`](docs/URL-INVESTIGATION.md) — trust analysis of the Vega SDK installer URL (`sdk-installer.vega.labcollab.net`). Verdict: legitimate Amazon distribution point.
-- [`docs/TAILNET-SETUP.md`](docs/TAILNET-SETUP.md) — subnet router architecture: PC advertises `10.0.0.0/24` so the stick is reachable via tailnet.
-- [`docs/VEGA-KNOWLEDGE.md`](docs/VEGA-KNOWLEDGE.md) — build runbook: devmode flow, React Native build, packaging.
+**Start here:** [`docs/README.md`](docs/README.md) — full documentation index.
+
+| Guide | What it covers |
+|---|---|
+| [`docs/AUTHENTICATION.md`](docs/AUTHENTICATION.md) | Vega CLI login, Amazon Developer vendor record, and the headless keyring solution |
+| [`docs/DEVMODE.md`](docs/DEVMODE.md) | Enabling developer mode on the Fire Stick (TV code flow) |
+| [`docs/APP-DEVELOPMENT.md`](docs/APP-DEVELOPMENT.md) | Building Vega OS apps — quick start (full reference: `VEGA-APP-GENIUS.md`) |
+| [`docs/VEGA-APP-GENIUS.md`](docs/VEGA-APP-GENIUS.md) | **The definitive 2,100-line Vega OS app development guide** — architecture, manifest reference, code examples, media, debugging |
+| [`docs/MISSION-CONTROL.md`](docs/MISSION-CONTROL.md) | Our app: architecture, TV-optimized dashboard, roadmap |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Deploying over the tailnet (socat tunnel, `vda` commands) |
+| [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | Common issues: launcher visibility, stale bundles, caching, Alexa |
+| [`docs/URL-INVESTIGATION.md`](docs/URL-INVESTIGATION.md) | Trust analysis of the Vega SDK installer URL (`sdk-installer.vega.labcollab.net`). Verdict: legitimate Amazon distribution point. |
+| [`docs/TAILNET-SETUP.md`](docs/TAILNET-SETUP.md) | Subnet router architecture: PC advertises `10.0.0.0/24` so the stick is reachable via tailnet. |
+| [`docs/VEGA-KNOWLEDGE.md`](docs/VEGA-KNOWLEDGE.md) | Build runbook: devmode flow, React Native build, packaging. |
 
 ## Quick start
 
@@ -55,4 +66,4 @@ firetv-vega/
 - Vega OS has **no general sideloading** (unlike Fire OS/Android) — devmode + CLI is the only path.
 - `vega build` alone can produce empty packages — the real React Native build is `npx react-native build-vega`.
 - TV developer codes expire after ~5 minutes.
-- Sideloaded apps get a generic icon — fine for personal use, not for distribution.
+- Sideloaded apps need `[package].icon` in the manifest for a launcher tile — see [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md#app-not-in-launcher).

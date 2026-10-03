@@ -3,8 +3,9 @@ schema-version = 1
 [package]
 title = "Mission Control"
 version = "0.1.0"
-build_number = 1
+build_number = 2
 id = "com.kellner.missioncontrol"
+icon = "@image/icon.png"
 
 [os.version]
 min = "1.2"
